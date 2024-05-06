@@ -1,28 +1,31 @@
 {
-  "name": "Flutter Development",
+  "name": "Flutter with Android and Windows Development",
   "dockerFile": "Dockerfile",
 
-  // Use the standard default for non-root user access. The 'vscode' user 
-  // set in the container may not have sudo access, so this setting makes 
-  // sure it doesn't try to install dependencies with sudo.
+  // Use the standard default for non-root user access.
   "runArgs": ["-u", "vscode"],
 
-  // Use 'settings' to set *default* container specific settings.json values on container create.
-  // You can edit these settings after create using File > Preferences > Settings > Remote.
+  // Set the default shell to bash.
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
 
-  // Add the IDs of extensions you want installed when the container is created.
+  // Add required extensions for Flutter, Android, and Windows development.
   "extensions": [
-    "dart-code.flutter"
+    "dart-code.flutter",
+    "vscjava.vscode-java-pack",
+    "microsoft.azuretools.azurefunctions",
+    "ms-python.python",
+    "ms-vscode.vscode-node-azure-pack",
+    "ms-vscode-remote.remote-containers"
   ],
 
-  // Set up port forwarding. These are forwarded directly to the container. You can expose more ports if needed.
+  // Forward necessary ports for development.
   "forwardPorts": [8000, 8080],
 
-  // Add environment variables. You can also add them locally in your .bashrc or .bash_profile.
+  // Environment variables for Flutter and Android SDK paths.
   "remoteEnv": {
-    "FLUTTER_HOME": "/usr/lib/flutter"
+    "FLUTTER_HOME": "/usr/lib/flutter",
+    "ANDROID_HOME": "/usr/lib/android-sdk"
   }
 }
