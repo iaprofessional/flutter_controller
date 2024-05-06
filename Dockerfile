@@ -8,11 +8,14 @@ RUN apt-get update && \
     android-sdk \
     && rm -rf /var/lib/apt/lists/*
 
-# Add a non-root vscode user to prevent file permission issues.
-RUN groupadd -r vscode && \
-    useradd -r -g vscode -G audio,video vscode \
-    && mkdir -p /home/vscode/.vscode-server /home/vscode/.vscode-server-insiders \
-    && chown -R vscode:vscode /home/vscode
+# Download Android Studio command line tools.
+RUN mkdir -p /opt/android-studio && \
+    curl -o /opt/android-studio/android-studio.zip https://developer.android.com/studio/?pkg=commandlinetools-linux && \
+    unzip -d /opt/android-studio /opt/android-studio/android-studio.zip && \
+    rm /opt/android-studio/android-studio.zip
+
+# Add Android Studio command line tools to PATH.
+ENV PATH="$PATH:/opt/android-studio/cmdline-tools/bin"
 
 # Set up environment variables for Flutter and Android SDK paths.
 ENV PATH $PATH:/usr/lib/flutter/bin:/usr/lib/android-sdk/tools:/usr/lib/android-sdk/tools/bin:/usr/lib/android-sdk/platform-tools
