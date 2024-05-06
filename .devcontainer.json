@@ -1,6 +1,7 @@
 {
   "name": "Flutter with Android and Windows Development",
   "dockerFile": "Dockerfile",
+  "remoteUser": "vscode",
 
   // Use the standard default for non-root user access.
   "runArgs": ["-u", "vscode"],
