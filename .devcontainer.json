@@ -2,6 +2,11 @@
   "name": "Flutter with Android and Windows Development",
   "dockerFile": "Dockerfile",
   "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/jarrodcolburn/features/flutter-sdk:0": {
+      "version": "latest",
+    }
+  },
 
   // Use the standard default for non-root user access.
   "runArgs": ["-u", "vscode"],
